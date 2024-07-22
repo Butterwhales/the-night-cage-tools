@@ -16,7 +16,6 @@ class GameBoard:
 
     def create_board(self, keeper_count, pit_friend_count, pathless_count, omens_count, wax_eater_count, crumbling_t_passage_count):
         self.tiles = []
-        self.tiles.extend([Tile(TileType("Start"))] * 5)
         self.tiles.extend([Tile(TileType("Key"))] * 8)
         self.tiles.extend([Tile(TileType("Gate"))] * 4)
         self.tiles.extend([Tile(TileType("Wax Eater Monster"))] * 13)
