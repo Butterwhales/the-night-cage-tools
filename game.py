@@ -14,7 +14,7 @@ class Tile:
 class GameBoard:
     tiles: List[Tile] = field(default_factory=list)
 
-    def create_board(self, keeper_count):
+    def create_board(self, keeper_count, pit_friend_count, pathless_count, omens_count, wax_eater_count, crumbling_t_passage_count):
         self.tiles = []
         self.tiles.extend([Tile(TileType("Start"))] * 5)
         self.tiles.extend([Tile(TileType("Key"))] * 8)
@@ -24,6 +24,11 @@ class GameBoard:
         self.tiles.extend([Tile(TileType("\"T\" Passage"))] * 32)
         self.tiles.extend([Tile(TileType("4-Way Passage"))] * 12)
         self.tiles.extend([Tile(TileType("Keeper"))] * keeper_count)
+        self.tiles.extend([Tile(TileType("Pit Friends"))] * pit_friend_count)
+        self.tiles.extend([Tile(TileType("Pathless"))] * pathless_count)
+        self.tiles.extend([Tile(TileType("Omens"))] * omens_count)
+        self.tiles.extend([Tile(TileType("Wax Eater"))] * wax_eater_count)
+        self.tiles.extend([Tile(TileType("Crumbling T Passages"))] * crumbling_t_passage_count)
     
     def shuffle_tiles(self):
         random.shuffle(self.tiles)
@@ -38,10 +43,16 @@ class GameBoard:
 
 def main():
     print("Welcome to the Tile Drawing Game!")
+    
     keeper_count = int(input("Enter the number of Keeper tiles: "))
+    pit_friend_count = int(input("Enter the number of Pit Friends tiles: "))
+    pathless_count = int(input("Enter the number of Pathless tiles: "))
+    omens_count = int(input("Enter the number of Omens tiles: "))
+    wax_eater_count = int(input("Enter the number of Wax Eater tiles: "))
+    crumbling_t_passage_count = int(input("Enter the number of Crumbling T Passages tiles: "))
     
     board = GameBoard()
-    board.create_board(keeper_count)
+    board.create_board(keeper_count, pit_friend_count, pathless_count, omens_count, wax_eater_count, crumbling_t_passage_count)
     board.shuffle_tiles()
     
     while True:
